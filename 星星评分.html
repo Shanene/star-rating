@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>星星评分</title>
+</head>
+<style>
+	*{
+		padding: 0px;
+		margin: 0px;
+	}
+	#odiv{
+		width:200px;
+		height: 40px;
+		margin:100px auto 10px;
+		overflow: hidden;
+	}
+	.active{
+		top:-40px;
+		position: relative;
+	}
+	p{
+		margin: 0 auto;
+        border: solid 1px #ccc;
+        text-align: center;
+        width: 100px;
+        display: none;
+	}
+</style>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("odiv");
+		var oimg=odiv.getElementsByTagName('img');
+		var op=document.getElementsByTagName("p");
+		for (var i = 0; i < oimg.length; i++) {
+			oimg[i].index=i;
+			oimg[i].onmouseover=function(){
+				for (var j = 0; j<=this.index; j++) {
+					oimg[j].className="active";
+				};
+				op[0].style.display="block";
+				if(this.index<=1){
+					op[0].innerHTML="一般";
+				}else if(this.index==2){
+					op[0].innerHTML="可以";
+				}else if(this.index==3){
+					op[0].innerHTML="不错";
+				}else{
+					op[0].innerHTML="完美";
+				}
+			}
+			oimg[i].onmouseout=function(){
+				for (var j = 0; j<oimg.length; j++) {
+					oimg[j].className="";
+				};
+				op[0].style.display="none";
+			}
+		};
+	}
+</script>
+<body>
+	<div id="odiv">
+		<img src="1.png" alt="">
+		<img src="1.png" alt="">
+		<img src="1.png" alt="">
+		<img src="1.png" alt="">
+		<img src="1.png" alt="">
+	</div>
+	<p>一般</p>	
+</body>
+</html>
